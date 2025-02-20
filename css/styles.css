@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    background-color: #333;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.section img {
+    width: 50%;
+    height: auto;
+}
+
+.section .text {
+    width: 50%;
+    padding-left: 20px;
+}
+
+.hero .title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6em; /* Tamaño de letra de 6em */
+    background-color: rgba(255, 255, 255, 0.6); /* Transparencia del 40% */
+    padding: 5px 10px; /* Reducir la altura del recuadro */
+    text-align: center;
+    border-radius: 5px;
+    white-space: nowrap; /* Texto en una sola línea */
+}
+
+.cabecera {
+    background-image: url('../images/facturaelectronica.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 530px; /* 530 de alta */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    color: black;
+    position: relative;
+}
+
+.cabecera .title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3em; /* Tamaño de letra de 3em */
+    text-align: left;
+    white-space: nowrap; /* Texto en una sola línea */
+    color: black; /* Color del texto */
+}
+
+.cabecera .textocabecera {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    max-width: 400px;
+    text-align: right; /* Alinear a la derecha */
+    align-self: center;
+    font-size: 2em;
+    margin-left: auto; /* Mover a la derecha */
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.logo-container img {
+    max-width: 100px; /* Tamaño levemente más pequeño */
+    height: auto;
+}
+
+footer {
+    background-color: black;
+    height: 7cm;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    .cabecera .title {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 992px) {
+    .cabecera .title {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column;
+    }
+    .section img, .section .text {
+        width: 100%;
+        padding: 0;
+    }
+    .section .text {
+        padding-top: 20px;
+    }
+    .cabecera .title {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 576px) {
+    .cabecera .title {
+        font-size: 1.2em;
+    }
+}
