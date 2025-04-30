@@ -3,75 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Software para el envío de facturas electrónicas Veri*factu con Access VB ó VBA</title>
+    <meta name="keywords" content="veri*factu, factura electronica, anulación de facturas, remisión, XML, AEAT, IGIC, registro, RegistroAlta, encadenamiento, SOAP, contraparte, AceptadaConErrores, XSD">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        @font-face {
+            font-family: 'ChaletLondonNineteenSeventy';
+            src: url('fonts/ChaletLondonNineteenSeventy.woff2') format('woff2'),
+                 url('fonts/ChaletLondonNineteenSeventy.woff') format('woff'),
+                 url('fonts/ChaletLondonNineteenSeventy.ttf') format('truetype'),
+                 url('fonts/ChaletLondonNineteenSeventy.eot') format('embedded-opentype'),
+                 url('fonts/ChaletLondonNineteenSeventy.svg') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Estilo para el botón de volver al inicio */
+        #back-to-top {
+            position: fixed; /* Fijo en la pantalla */
+            bottom: 20px; /* 20px desde el fondo */
+            right: 20px; /* 20px desde la derecha */
+            display: none; /* Oculto por defecto */
+            background-color: #333; /* Color de fondo oscuro */
+            color: white; /* Color del texto blanco */
+            border: none; /* Sin borde */
+            padding: 10px 15px; /* Espaciado interno */
+            border-radius: 50%; /* Bordes redondeados */
+            cursor: pointer; /* Cursor de puntero */
+            font-size: 20px; /* Tamaño de fuente */
+        }
+
+        /* Estilo para la sección de preguntas frecuentes */
+        .faq-section {
+            padding: 20px; /* Espaciado interno */
+            background-color: #f1f1f1; /* Color de fondo claro */
+            border-top: 1px solid #ddd; /* Borde superior */
+        }
+
+        /* Estilo para cada pregunta frecuente */
+        .faq-question {
+            margin-bottom: 5px; /* Espaciado inferior reducido */
+            font-weight: bold; /* Texto en negrita */
+        }
+
+        /* Estilo para la respuesta de cada pregunta frecuente */
+        .faq-answer {
+            display: none; /* Oculto por defecto */
+            margin-bottom: 10px; /* Espaciado inferior reducido */
+            color: #003366; /* Color azul oscuro */
+        }
+
+        /* Estilo para mostrar la respuesta */
+        .faq-answer.visible {
+            display: block; /* Mostrar bloque */
+        }
+
+        /* Estilo para el enlace de respuesta */
+        .faq-question a {
+            cursor: pointer; /* Cursor de puntero */
+            color: #0056b3; /* Color azul más oscuro */
+            text-decoration: underline; /* Subrayado */
+        }
+
+        /* Estilo para el enlace de ocultar */
+        .faq-question a.ocultar {
+            color: #8B0000; /* Color rojo muy oscuro */
+        }
+
+        /* Estilo para el texto del logo */
+        .logo-container p {
+            color: white; /* Color del texto blanco */
+            font-size: 0.84em; /* Tamaño de letra reducido en un 30% */
+            margin: 0; /* Sin margen */
+            font-family: 'ChaletLondonNineteenSeventy', sans-serif; /* Fuente personalizada */
+        }
+
+        /* Estilo para la imagen del logo */
+        .logo-container img {
+            max-width: 125px; /* Ancho máximo aumentado en un 25% */
+            height: auto; /* Altura automática */
+        }
+
+        /* Estilo para el título principal */
+        .cabecera .title h1 {
+            font-family: 'ChaletLondonNineteenSeventy', sans-serif; /* Fuente personalizada */
+        }
+
+        /* Estilo para la cabecera */
+        .cabecera {
+            background-image: url('images/facturaelectronica.jpg'); /* Imagen de fondo por defecto */
+            background-size: cover; /* Cubrir todo el fondo */
+            background-position: center; /* Centrar la imagen */
+            height: 530px; /* Altura de 530px */
+            display: flex; /* Usar flexbox */
+            flex-direction: column; /* Dirección de columna */
+            align-items: flex-start; /* Alinear elementos al inicio */
+            justify-content: center; /* Centrar verticalmente */
+            padding: 20px; /* Espaciado interno */
+            color: black; /* Color del texto negro */
+            position: relative; /* Posición relativa */
+        }
+
+        @media (max-width: 992px) {
+            .cabecera {
+                background-image: url('images/facturaelectronica_Movil.jpg'); /* Imagen de fondo para móviles */
+                justify-content: flex-start; /* Alinear elementos al inicio */
+                padding-top: 25px; /* Espaciado superior */
+            }
+
+            .cabecera .title {
+                margin-top: 5px; /* Margen superior de 5px */
+            }
+
+            .textocabecera {
+                margin-top: 25px; /* Margen superior de 25px */
+                text-align: left; /* Alinear texto a la izquierda */
+            }
+        }
+
+        /* Estilo para el banner de cookies */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            display: none;
+        }
+
+        .cookie-banner button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo-container">
-                <p>Factura electrónica</p>
-                <img src="images/logo2.png" alt="Logo">
+    <!-- Banner de cookies -->
+    <div class="cookie-banner" id="cookie-banner">
+        <p>Este sitio web utiliza cookies para mejorar su experiencia. 
+            <button onclick="acceptCookies()">Aceptar</button>
+            <button onclick="declineCookies()">Cancelar</button>
+        </p>
+    </div>
+    <!-- Contenido principal, oculto por defecto -->
+    <div id="content">
+        <header>
+            <nav>
+                <div class="logo-container">
+                    <img src="images/Logo_ChemiFactu.png" alt="Logo">
+                    <p>Facturas Veri*factu fáciles</p>
+                </div>
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <ul id="menu">
+                    <li><a href="#opcion1">In/Out</a></li>
+                    <li><a href="#opcion2">Facturación</a></li>
+                    <li><a href="#opcion3">Envíos</a></li>
+                    <li><a href="#opcion4">QR</a></li>
+                    <li><a href="#opcion5">Huella</a></li>
+                    <li><a href="quienessomos.html">Quiénes somos</a></li>
+                    <li><a href="contactar.html">Contactar</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="cabecera">
+            <div class="title">
+                <h1>La herramienta para enviar<br>
+                    facturas electrónicas Veri*factu<br>
+                    con Access VB ó VBA</h1>
             </div>
-            <ul>
-                <li><a href="#opcion1">Opción 1</a></li>
-                <li><a href="#opcion2">Opción 2</a></li>
-                <li><a href="#opcion3">Opción 3</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="cabecera">
-        <div class="title">
-            <h1>Hola to Our Landing Page</h1>
-        </div>
-        <div class="textocabecera">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-    </section>
-    <main>
-        <section id="opcion1" class="section">
-            <img src="images/image1.jpg" alt="Image 1">
-            <div class="text">
-                <h2>Section 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </section>
-        <section id="opcion2" class="section reverse">
-            <div class="text">
-                <h2>Section 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-            <img src="images/image2.jpg" alt="Image 2">
-        </section>
-        <section id="opcion3" class="section">
-            <img src="images/image3.jpg" alt="Image 3">
-            <div class="text">
-                <h2>Section 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="textocabecera">
+                <p>Te facilitamos el envío de facturas a la AEAT , aconsejamos sobre la confección correcta de facturas y tickets así como la impresión del QR obligatorio.</p>
             </div>
         </section>
-        <section class="section reverse">
-            <div class="text">
-                <h2>Section 4</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-            <img src="images/image4.jpg" alt="Image 4">
-        </section>
-        <section class="section">
-            <img src="images/image5.jpg" alt="Image 5">
-            <div class="text">
-                <h2>Section 5</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Footer Content</p>
-    </footer>
+        <main>
+            <section id="opcion1" class="section">
+                <img src="images/AEAT_Factura_Electronica.jpg" alt="Image 1">
+                <div class="text clsTextoSecciones">
+                    <h2>Section 1 Tablas: Registros de salida y entrada</h2>
+                    <p>Cada tipo de negocio es especial, te ayudamos a discernir que campos y que datos son imprescindibles para realizar el envío de tus facturas, cuales son poco habituales pero posibles y cuales bajo tu opinión nunca usaremos.
+                        <br>Las salidas o outputs pueden venir como:<br>
+                        <li> Valores en las tablas (no son necesarias todas las del diagrama).</li>
+                        <li> Pasar como parámetros.</li> 
+                        <li> Habitualmente fijos en la tabla configuración.</li>
+                        <br>
+                        Las entradas o inputs son las respuestas de la AEAT indicando si cada factura es válida o hay que realizar alguna acción.
+                    </p>
+                </div>
+            </section>
+            <section id="opcion2" class="section reverse">
+                <img src="images/image2.jpg" alt="Image 2">
+                <div class="text clsTextoSecciones">
+                    <h2>Section 2 Creación correcta de facturas</h2>
+                    <p>En nuestra experiencia hemos detectado que además del envío de facturas, generación del hash y del código QR , uno de los problemas más comunes es la <b>realización correcta de las facturas</b>, ya que si no siguen las pautas del reglamento español de facturación  no será dada por válida. Chemifactu te ayuda a detectar los falllos y hacer fácil esta tarea.</p>
+                </div>
+            </section>
+            <section id="opcion3" class="section">
+                <img src="images/envio_AEAT_veri-factu.jpg" alt="Image 3">
+                <div class="text clsTextoSecciones">
+                    <h2>Section 3 Control de Envíos</h2>
+                    <p>Chemifactu también se encarga del control de envíos y esperas, ya que la AEAT mediante el sistema Veri*factu nos indica las pausas de tiempo de espera entre cada envío de facturas, debiendo estar preparadas  una o múltiples facturas para cuando la Agencia Tributaria nos autorice a comenzar el envío.</p>
+                </div>
+            </section>
+            <section id="opcion4" class="section reverse">
+                <img src="images/QR_AEAT.jpg" alt="Image 4">
+                <div class="text clsTextoSecciones">
+                    <h2>Section 4 Creación de QR para Tickets y Facturas</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </section>
+            <section id="opcion5" class="section">
+                <img src="images/hash_sha256_Verifactu.jpg" alt="Image 5">
+                <div class="text clsTextoSecciones">
+                    <h2>Section 5 Algoritmo de cálculo de huella o «hash»</h2>
+                    <p>Creamos por  tí el HASH o huella para todos los registros de facturación, de alta y de anulación imprescindibles en el sistema Veri*factu.<br>
+                        En Veri*factu, el encadenamiento consiste en que cada registro de facturación se valida por un hash calculado con información con los datos de su propio registro y del registro anterior, incluido el hash anterior.<br>Esto crea una cadena continua de registros donde cada uno está vinculado al anterior, lo que hace  imposible la manipulación de la información.</p>
+                </div>
+            </section>
+            <section class="faq-section">
+                <h2>Preguntas Frecuentes</h2>
+                <div class="faq-question">
+                    <p>¿En qué se diferencia la fecha de operación de la fecha de expedición?</p>
+                    <div class="faq-answer">
+                        <p>Fecha de expedición: Es la fecha en que se crea y se entrega la factura al cliente.<br>
+                            Fecha de operación: Es la fecha en la que se realizó la transacción o el servicio que se está facturando. Puede ser diferente a la fecha de expedición si la factura se emite después de que se haya realizado la operación. No siempre es obligatoria.
+                            <br>Ejemplo: <br><i>-Empresas de servicios:   Cuando se factura un servicio que se realizó en una fecha anterior a la emisión de la factura.</i><br>
+                        </p>
+                    </div>
+                    <a onclick="toggleAnswer(this)">Respuesta</a>
+                </div>
+                <div class="faq-question">
+                    <p>¿Tendré que agregar campos y tablas nuevas a las tablas que ya tengo?</p>
+                    <div class="faq-answer">
+                        <p>La confección de facturas con Chemifactu necesita algunos campos indispensables para las facturas. Para los datos fijos habituales tendrás dos opciones:<br> - Usar una tabla de configuración para los datos fijos habituales.<br> - Introducir los valores por código.   </p>
+                    </div>
+                    <a onclick="toggleAnswer(this)">Respuesta</a>
+                </div>
+                <div class="faq-question">
+                    <p>¿Que es un registro de subsanación ?</p>
+                    <div class="faq-answer">
+                        <p>Es un campo que devulelve AEAT a traves de Chemifactu y que indica que esa factura hay que rehacerla por que fué enviada con errores.</p>
+                    </div>
+                    <a onclick="toggleAnswer(this)">Respuesta</a>
+                </div>
+                <div class="faq-question">
+                    <p>¿Están afectadas por el sistema Veri-factu las tiendas online?</p>
+                    <div class="faq-answer">
+                        <p>Sí, la forma convencional o virtual por medio de la cual se oferten o entreguen los bienes o se presten los servicios es indiferente para la obligatoriedad de la aplicación de la normativa incluida en el reglamento de requisitos de los sistemas informáticos de facturación (RRSIF), aprobado por el Real Decreto 1007/2023, de 5 de diciembre, y su normativa de desarrollo.</p>
+                    </div>
+                    <a onclick="toggleAnswer(this)">Respuesta</a>
+                </div>
+                <div class="faq-question">
+                    <p>¿Que multas prevee la ley a los programas informáticos de facturación que no cumplan con los requisitos?</p>
+                    <div class="faq-answer">
+                        <p>El artículo 201 bis de la Ley 58/2003, de 17 de diciembre, General Tributaria (LGT), prevé dos tipos de sanciones, ambas graves:<br>
+                            A la fabricación, producción y comercialización de sistemas informáticos que no cumplan con lo dispuesto en el artículo 29.2.j) de la LGT y su normativa de desarrollo (reglamento, orden ministerial y documentación relacionada de la sede electrónica de la Agencia Tributaria).<br>
+                            La cuantía estipulada es de <b>150.000 euros fijos por cada ejercicio económico</b> en el que se hayan producido ventas de este tipo de sistemas informáticos y por cada tipo distinto de estos que sea objeto de la infracción.<br>
+                            Por otro lado, cuando no se certifiquen dichos sistemas informáticos estando obligados a ello, se sancionará con <b>1.000 euros por sistema informático comercializado</b> sin dicha certificación.<br>
+                            A la tenencia de sistemas informáticos que no se ajusten a lo establecido en el artículo 29.2.j) de la LGT, cuando los mismos no estén debidamente certificados teniendo que estarlo por disposición reglamentaria o cuando se hayan alterado o modificado los dispositivos certificados. El importe es de <b>50.000 euros por cada ejercicio.</b><br></p>
+                    </div>
+                    <a onclick="toggleAnswer(this)">Respuesta</a>
+                </div>
+            </section>
+        </main>
+        <div id="footer-container"></div>
+        <button id="back-to-top" onclick="scrollToTop()">&#8679;</button>
+    </div>
+    <object id="footer-object" data="./footer_pagina.html" type="text/html" style="width: 100%; border: none;"></object>
     <script>
-        function showAlert() {
-            alert('Thank you for your interest!');
+        // Función para alternar el menú de navegación en dispositivos móviles
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('show');
         }
+
+        // Mostrar u ocultar el botón de volver al inicio según el desplazamiento de la página
+        window.onscroll = function() {
+            var backToTopButton = document.getElementById('back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        // Función para desplazarse al inicio de la página
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Función para alternar la visibilidad de las respuestas en la sección de preguntas frecuentes
+        function toggleAnswer(element) {
+            var answer = element.previousElementSibling;
+            if (answer.classList.contains('visible')) {
+                answer.classList.remove('visible');
+                element.textContent = 'Respuesta';
+                element.classList.remove('ocultar');
+            } else {
+                answer.classList.add('visible');
+                element.textContent = 'Ocultar';
+                element.classList.add('ocultar');
+            }
+        }
+
+        // Función para aceptar cookies y mostrar el contenido principal
+        function acceptCookies() {
+            document.cookie = "cookies_accepted=true; path=/";
+            document.getElementById('cookie-banner').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            loadClarity();
+        }
+
+        // Función para rechazar cookies y mostrar el contenido principal sin cargar Clarity
+        function declineCookies() {
+            document.cookie = "cookies_accepted=false; path=/";
+            document.getElementById('cookie-banner').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Función para verificar si las cookies han sido aceptadas
+        function checkCookies() {
+            if (document.cookie.split(';').some((item) => item.trim().startsWith('cookies_accepted=true'))) {
+                document.getElementById('content').style.display = 'block';
+                loadClarity();
+            } else {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+        }
+
+        // Función para cargar el script de Clarity
+        function loadClarity() {
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "qhbljqhmvi");
+        }
+
+        // Ajustar la altura del <object> dinámicamente
+        document.addEventListener("DOMContentLoaded", function () {
+            const footerObject = document.getElementById("footer-object");
+            footerObject.onload = function () {
+                const footerDoc = footerObject.contentDocument || footerObject.contentWindow.document;
+                footerObject.style.height = footerDoc.body.scrollHeight + "px";
+            };
+        });
     </script>
+    <script src="js/cookies.js"></script>
 </body>
 </html>

@@ -1,0 +1,1 @@
+// Este archivo puede estar vacío si solo estás usando CSS para el efecto parallax

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactar - ChemiFactu</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .g-recaptcha {
+            margin-bottom: 20px;
+        }
+
+        .contact-title-section {
+            padding-left: 100px;
+            margin-bottom: 20px;
+        }
+
+        .contact-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .contact-section .text {
+            flex: 1;
+        }
+
+        .contact-section img {
+            max-width: 300px;
+            margin-left: 20px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 992px) {
+            .contact-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-section img {
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+
+            .contact-title-section {
+                padding-left: 0;
+                text-align: center;
+            }
+        }
+
+        /* Estilo para el texto del logo */
+        .logo-container p {
+            color: white; /* Color del texto blanco */
+            font-size: 0.84em; /* Tamaño de letra reducido en un 30% */
+            margin: 0; /* Sin margen */
+        }
+
+        /* Estilo para la imagen del logo */
+        .logo-container img {
+            max-width: 125px; /* Ancho máximo aumentado en un 25% */
+            height: auto; /* Altura automática */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <p>ChemiFactu</p>
+                <img src="images/logo2.png" alt="Logo">
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul id="menu">
+                <li><a href="#opcion1">In/Out</a></li>
+                <li><a href="#opcion2">Facturación</a></li>
+                <li><a href="#opcion3">Envíos</a></li>
+                <li><a href="#opcion4">QR</a></li>
+                <li><a href="#opcion5">Huella</a></li>
+                <li><a href="quienessomos.html">Quiénes somos</a></li>
+                <li><a href="contactar.html">Contactar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="contactar-title" class="contact-title-section">
+            <h2>Contactar</h2>
+            <p>Si te interesa saber más sobre nuestro proyecto contacta con nosotros, responderemos lo antes posible y te pasaremos la información de la que dispongamos.</p>
+        </section>
+        <section id="contactar" class="contact-section">
+            <div class="form-section">
+                <form action="contactar/procesar.asp" method="POST" onsubmit="return validateForm()">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono">
+                    
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                    
+                    <!-- <div class="g-recaptcha" data-sitekey="your-site-key"></div> -->
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <div class="image-section">
+                <img src="images/Asistencia.jpg" alt="Asistencia">
+            </div>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            if (email.indexOf('@') === -1) {
+                alert('Por favor, introduce un correo electrónico válido.');
+                return false;
+            }
+            return true;
+        }
+
+        // Función para cargar el contenido del footer
+        function loadFooter() {
+            fetch('footer_pagina.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        }
+
+        // Llamar a la función para cargar el footer al cargar la página
+        window.onload = function() {
+            loadFooter();
+        };
+    </script>
+</body>
+</html>

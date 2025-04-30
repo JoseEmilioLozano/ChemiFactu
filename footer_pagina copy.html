@@ -1,0 +1,39 @@
+﻿<div id="footer" class="row">
+    <div class="col-sm-3">
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/pg/aviso_legal.asp">Aviso legal</a></li>
+          <li><a href="/pg/politica_de_privacidad.asp">Política de privacidad</a></li>
+          <li><a href="/pg/litigionsenlinea.asp">Resolución de litigios en línea</a></li>
+          <li><a href="/pg/cookies.asp">Cookies</a></li>
+          <li><a href="/quienes_somos.html">¿Quienes somos?</a></li>
+        </ul>
+    </div>
+
+    <div class="col-sm-6"></div>
+
+    <div class="col-sm-1">
+        <img class="logo-footer" src="/images/Logo_ChemiFactu.png" />
+    </div>
+
+    <div class="col-sm-2 copy-right">
+        Carrito 5<br/>
+        CopyRight &copy; <%=Year(Date)%><br/>
+
+
+        <!--<a href="https://www.facebook.com/Elcofredetuvida" target="_blank" class="link-facebook"><img src="../images/logo_facebook.png" /></a>-->
+
+
+
+
+
+    </div>
+</div>
+
+<%
+if request.cookies("ECDTV_ACK") <> "1" then
+  server.execute("/pg/cookies/aviso_cookies.asp")
+end if
+%>
+
+<%'server.execute("/en_construccion.asp")%>

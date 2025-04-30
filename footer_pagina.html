@@ -1,0 +1,28 @@
+﻿<div id="footer" class="row" style="text-align: left;">
+  <footer style="background-color: black; color: white; padding: 20px; text-align: left;">
+    <div style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+      <img class="logo-footer" src="/images/Logo_ChemiFactu.png" style="width: 120px; height: auto; margin-bottom: 15px;" />
+      
+      <ul style="list-style-type: none; padding: 0; margin: 0; text-align: left;">
+        <li><a href="/" target="_top" style="color: white; text-decoration: none; text-align: left;">Inicio</a></li>
+        <li><a href="/aviso_legal.html" target="_top" style="color: white; text-decoration: none; text-align: left;">Aviso legal</a></li>
+        <li><a href="/pg/politica_de_privacidad.asp" target="_top" style="color: white; text-decoration: none; text-align: left;">Política de privacidad</a></li>
+        <li><a href="/pg/litigionsenlinea.asp" target="_top" style="color: white; text-decoration: none; text-align: left;">Resolución de litigios en línea</a></li>
+        <li><a href="/pg/cookies.asp" target="_top" style="color: white; text-decoration: none; text-align: left;">Cookies</a></li>
+        <li><a href="/quienes_somos.html" target="_top" style="color: white; text-decoration: none; text-align: left;">¿Quienes somos?</a></li>
+      </ul>
+      
+      <div style="margin-top: 15px; color: white; text-align: left;">
+        Chemifactu<br/>
+        CopyRight &copy; <span id="current-year" style="color: white;"></span><br/>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+      });
+    </script>
+  </footer>
+</div>
+
+

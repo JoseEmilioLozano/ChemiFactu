@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes somos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo-container">
+                <p>Factura electrónica</p>
+                <img src="images/logo2.png" alt="Logo">
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul id="menu">
+                <li><a href="#opcion1">In/Out</a></li>
+                <li><a href="#opcion2">Facturación</a></li>
+                <li><a href="#opcion3">Envíos</a></li>
+                <li><a href="#opcion4">QR</a></li>
+                <li><a href="#opcion5">Huella</a></li>
+                <li><a href="quienessomos.html">Quiénes somos</a></li>
+                <li><a href="contactar.html">Contactar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="quienes-somos" class="section">
+            <div class="text">
+                <h2>Quiénes somos</h2>
+                <p>Somos un equipo de programadores españoles dedicado al entendimiento de la facturación
+                electrónica para programadores que utilizan tablas de Microsoft Access.
+                Nuestro objetivo es simplificar y optimizar el envío de facturas a la AEAT.<br> 
+                Dedicamos parte de nuestro tiempo a este proyecto porque creemos que podemos ayudar a
+                los programadores autónomos y pequeñas empresas a facilitar el sistema de envío de facturas a la Agencia Tributária Española.<br>
+                Trabajamos online y en remoto apara hacer nuestra labar más conciliable.<br>
+                No dudes en contactar con nosotros si tienes alguna duda o sugerencia.</p>
+                </p>
+                <img src="images/tablas_access.jpg" alt="Tablas Access">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Footer Content</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

@@ -1,192 +1,355 @@
+/* Estilo global para el cuerpo del documento */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif; /* Fuente Arial */
+    margin: 0; /* Sin margen */
+    padding: 0; /* Sin relleno */
 }
 
+/* Estilo para el encabezado */
 header {
-    background-color: #f8f9fa;
-    padding: 20px;
-    text-align: center;
+    background-color: #f8f9fa; /* Color de fondo claro */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centrar el texto */
 }
 
+/* Estilo para la navegación */
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear elementos verticalmente */
+    justify-content: space-between; /* Espacio entre elementos */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #333; /* Color de fondo oscuro */
 }
 
+/* Estilo para la lista de navegación */
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
+    list-style-type: none; /* Sin estilo de lista */
+    padding: 0; /* Sin relleno */
+    margin: 0; /* Sin margen */
+    display: flex; /* Usar flexbox */
+    flex-grow: 1; /* Crecer para llenar el espacio */
+    justify-content: flex-end; /* Alinear elementos al final */
 }
 
+/* Estilo para los elementos de la lista de navegación */
 nav ul li {
-    margin: 0 15px;
+    margin: 0 15px; /* Margen horizontal */
 }
 
+/* Estilo para los enlaces de navegación */
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 14px 20px;
-    display: block;
+    color: white; /* Color del texto blanco */
+    text-decoration: none; /* Sin subrayado */
+    padding: 14px 20px; /* Espaciado interno */
+    display: block; /* Mostrar como bloque */
 }
 
+/* Estilo para los enlaces de navegación al pasar el ratón */
 nav ul li a:hover {
-    background-color: #575757;
+    background-color: #575757; /* Color de fondo al pasar el ratón */
 }
 
+/* Estilo para el icono del menú */
+.menu-icon {
+    display: none; /* Oculto por defecto */
+    flex-direction: column; /* Dirección de columna */
+    cursor: pointer; /* Cursor de puntero */
+}
+
+/* Estilo para las barras del icono del menú */
+.menu-icon div {
+    width: 25px; /* Ancho de 25px */
+    height: 3px; /* Alto de 3px */
+    background-color: white; /* Color de fondo blanco */
+    margin: 4px 0; /* Margen vertical */
+}
+
+/* Estilo para las secciones */
 .section {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear elementos verticalmente */
+    padding: 20px; /* Espaciado interno */
+    border-bottom: 1px solid #ddd; /* Borde inferior */
 }
 
+/* Estilo para las imágenes de las secciones */
 .section img {
-    width: 50%;
-    height: auto;
+    width: 50%; /* Ancho del 50% */
+    height: auto; /* Altura automática */
 }
 
+/* Estilo para el texto de las secciones */
 .section .text {
-    width: 50%;
-    padding-left: 20px;
+    width: 50%; /* Ancho del 50% */
+    padding-left: 20px; /* Espaciado interno a la izquierda */
 }
 
+/* Estilo para el título del héroe */
 .hero .title {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute; /* Posición absoluta */
+    top: 20px; /* 20px desde arriba */
+    left: 50%; /* 50% desde la izquierda */
+    transform: translateX(-50%); /* Centrar horizontalmente */
     font-size: 6em; /* Tamaño de letra de 6em */
     background-color: rgba(255, 255, 255, 0.6); /* Transparencia del 40% */
     padding: 5px 10px; /* Reducir la altura del recuadro */
-    text-align: center;
-    border-radius: 5px;
+    text-align: center; /* Centrar el texto */
+    border-radius: 5px; /* Bordes redondeados */
     white-space: nowrap; /* Texto en una sola línea */
 }
 
+/* Estilo para la cabecera */
 .cabecera {
-    background-image: url('../images/facturaelectronica.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 530px; /* 530 de alta */
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    color: black;
-    position: relative;
+    background-image: url('../images/facturaelectronica.jpg'); /* Imagen de fondo */
+    background-size: cover; /* Cubrir todo el fondo */
+    background-position: center; /* Centrar la imagen */
+    height: 530px; /* Altura de 530px */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección de columna */
+    align-items: flex-start; /* Alinear elementos al inicio */
+    justify-content: center; /* Centrar verticalmente */
+    padding: 20px; /* Espaciado interno */
+    color: black; /* Color del texto negro */
+    position: relative; /* Posición relativa */
 }
 
+/* Estilo para el título de la cabecera */
 .cabecera .title {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 3em; /* Tamaño de letra de 3em */
-    text-align: left;
-    white-space: nowrap; /* Texto en una sola línea */
-    color: black; /* Color del texto */
+    font-size: 1.8em; /* Tamaño de letra reducido en un 40% */
+    text-align: left; /* Alinear a la izquierda */
+    color: black; /* Color del texto negro */
+    white-space: normal; /* Permitir múltiples líneas */
 }
 
+/* Estilo para el texto de la cabecera */
 .cabecera .textocabecera {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    padding: 20px; /* Espaciado interno */
+    max-width: 400px; /* Ancho máximo de 400px */
     text-align: right; /* Alinear a la derecha */
-    align-self: center;
-    font-size: 2em;
-    margin-left: auto; /* Mover a la derecha */
+    align-self: flex-end; /* Alinear al final */
+    font-size: 1em; /* Tamaño de letra */
+    margin-top: 20px; /* Margen superior */
 }
 
+/* Estilo para el contenedor del logo */
 .logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 20px;
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección de columna */
+    align-items: center; /* Alinear al centro */
+    margin-right: 20px; /* Margen derecho */
 }
 
+/* Estilo para el texto del logo */
+.logo-container p {
+    color: white; /* Color del texto blanco */
+    font-size: 1.2em; /* Tamaño de letra */
+    margin: 0; /* Sin margen */
+}
+
+/* Estilo para la imagen del logo */
 .logo-container img {
-    max-width: 100px; /* Tamaño levemente más pequeño */
-    height: auto;
+    max-width: 100px; /* Ancho máximo de 100px */
+    height: auto; /* Altura automática */
 }
 
+/* Estilo para el pie de página */
 footer {
-    background-color: black;
-    height: 7cm;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: black; /* Color de fondo negro */
+    height: 7cm; /* Altura de 7cm */
+    color: white; /* Color del texto blanco */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Alinear al centro */
+    justify-content: center; /* Centrar horizontalmente */
 }
 
-/* Responsive styles */
+/* Estilo para el botón de volver al inicio */
+#back-to-top {
+    position: fixed; /* Fijo en la pantalla */
+    bottom: 20px; /* 20px desde el fondo */
+    right: 20px; /* 20px desde la derecha */
+    display: none; /* Oculto por defecto */
+    background-color: #333; /* Color de fondo oscuro */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 50%; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero */
+    font-size: 20px; /* Tamaño de fuente */
+}
+
+/* Estilo para el banner de cookies */
+.cookie-banner {
+    position: fixed; /* Fijo en la pantalla */
+    bottom: 0; /* 0 desde el fondo */
+    left: 0; /* 0 desde la izquierda */
+    width: 100%; /* Ancho completo */
+    background-color: #333; /* Color de fondo oscuro */
+    color: white; /* Color del texto blanco */
+    padding: 20px; /* Espaciado interno */
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Alinear al centro */
+    z-index: 1000; /* Superponer sobre otros elementos */
+}
+
+/* Estilo para el texto del banner de cookies */
+.cookie-banner p {
+    margin: 0; /* Sin margen */
+    padding-right: 20px; /* Espaciado interno a la derecha */
+}
+
+/* Estilo para el botón del banner de cookies */
+.cookie-banner button {
+    padding: 10px 20px; /* Espaciado interno */
+    margin-left: 10px; /* Margen izquierdo */
+    background-color: #555; /* Color de fondo gris */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero */
+}
+
+/* Estilo para el botón del banner de cookies al pasar el ratón */
+.cookie-banner button:hover {
+    background-color: #777; /* Color de fondo gris claro */
+}
+
+/* Estilo para la sección de contacto */
+.contact-section {
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: flex-start; /* Alinear al inicio */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilo para la sección del formulario */
+.form-section {
+    flex: 1; /* Crecer para llenar el espacio */
+}
+
+/* Estilo para la sección de la imagen */
+.image-section {
+    display: flex; /* Usar flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    flex: 1; /* Crecer para llenar el espacio */
+}
+
+/* Estilo para la imagen de la sección de contacto */
+.image-section img {
+    max-width: 100%; /* Ancho máximo del 100% */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilos responsivos */
 @media (max-width: 1200px) {
     .cabecera .title {
-        font-size: 2.5em;
+        font-size: 1.5em; /* Tamaño de letra */
     }
     .cabecera .textocabecera {
-        font-size: 1.8em;
+        font-size: 1.8em; /* Tamaño de letra */
     }
 }
 
 @media (max-width: 992px) {
     .cabecera .title {
-        font-size: 2em;
+        font-size: 1.2em; /* Tamaño de letra */
     }
     .cabecera .textocabecera {
-        font-size: 1.5em;
+        font-size: 1.5em; /* Tamaño de letra */
+    }
+    .menu-icon {
+        display: flex; /* Mostrar el icono del menú */
+    }
+    nav ul {
+        display: none; /* Ocultar la lista de navegación */
+        flex-direction: column; /* Dirección de columna */
+        align-items: flex-start; /* Alinear al inicio */
+        width: 100%; /* Ancho completo */
+        background-color: #333; /* Color de fondo oscuro */
+    }
+    nav ul li {
+        width: 100%; /* Ancho completo */
+        text-align: left; /* Alinear a la izquierda */
+        margin: 0; /* Sin margen */
+    }
+    nav ul li a {
+        width: 100%; /* Ancho completo */
+        padding: 10px 20px; /* Espaciado interno */
+    }
+    nav ul.show {
+        display: flex; /* Mostrar la lista de navegación */
+    }
+    .section {
+        flex-direction: column; /* Dirección de columna */
+    }
+    .section img, .section .text {
+        width: 100%; /* Ancho completo */
+        padding: 0; /* Sin relleno */
+    }
+    .section .text {
+        padding-top: 20px; /* Espaciado superior */
+    }
+    .contact-section {
+        flex-direction: column; /* Dirección de columna */
+    }
+    .image-section {
+        order: -1; /* Orden inverso */
+        margin-bottom: 20px; /* Margen inferior */
+    }
+}
+
+@media (min-width: 992px) {
+    .section.reverse {
+        flex-direction: row-reverse; /* Dirección de fila inversa */
     }
 }
 
 @media (max-width: 768px) {
     .section {
-        flex-direction: column;
+        flex-direction: column; /* Dirección de columna */
     }
     .section img, .section .text {
-        width: 100%;
-        padding: 0;
+        width: 100%; /* Ancho completo */
+        padding: 0; /* Sin relleno */
     }
     .section .text {
-        padding-top: 20px;
+        padding-top: 20px; /* Espaciado superior */
     }
     .cabecera .title {
-        font-size: 1.5em;
+        font-size: 1em; /* Tamaño de letra */
     }
     .cabecera .textocabecera {
-        font-size: 1.2em;
+        font-size: 1.2em; /* Tamaño de letra */
     }
     .logo-container img {
-        max-width: 80px;
+        max-width: 80px; /* Ancho máximo */
     }
     nav ul {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: column; /* Dirección de columna */
+        align-items: flex-start; /* Alinear al inicio */
     }
     nav ul li {
-        margin: 10px 0;
+        margin: 10px 0; /* Margen vertical */
     }
 }
 
 @media (max-width: 576px) {
     .cabecera .title {
-        font-size: 1.2em;
+        font-size: 0.8em; /* Tamaño de letra */
     }
     .cabecera .textocabecera {
-        font-size: 1em;
+        font-size: 1em; /* Tamaño de letra */
     }
     .logo-container img {
-        max-width: 60px;
+        max-width: 60px; /* Ancho máximo */
     }
     nav ul {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: column; /* Dirección de columna */
+        align-items: flex-start; /* Alinear al inicio */
     }
     nav ul li {
-        margin: 10px 0;
+        margin: 10px 0; /* Margen vertical */
     }
 }
